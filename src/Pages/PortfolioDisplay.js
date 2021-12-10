@@ -1,11 +1,12 @@
-import PortfolioBuilder from "./PortfolioBuilder";
-const PortfolioDisplay = () => {
+import HTMLReactParser from "html-react-parser";
+
+const PortfolioDisplay = ({ text }) => {
   return (
-    <div className="portfolio-display">
-      <h2> Portolio Builder </h2>
+    <div className="PortfolioDisplay">
+      <h2> Portfolio Content </h2>
+      <p> {HTMLReactParser(text)} </p>
     </div>
   );
 };
-
 
 export default PortfolioDisplay;
