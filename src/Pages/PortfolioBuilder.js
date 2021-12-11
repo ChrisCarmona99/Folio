@@ -4,7 +4,9 @@ import { useState } from "react";
 import PortfolioDisplay from "./PortfolioDisplay";
 
 const PortfolioBuilder = () => {
-  const [text, setText] = useState("");
+const [text, setText] = useState("");
+
+
 
   return (
     <div className="editor">
