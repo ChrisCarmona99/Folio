@@ -1,37 +1,26 @@
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { useState } from "react";
 import PortfolioDisplay from "./PortfolioDisplay";
 
 const PortfolioBuilder = () => {
-  const [title, setTitle] = useState("");
-  const [summary, setSummary] = useState("");
-  const [selectedFile, setSelectedFile] = useState("");
+const [text, setText] = useState("");
+
+
 
   return (
-    <div className="PortfolioBuilder">
-      <h2> Add a new experience </h2>
-      <form>
-        <label> Title </label>
-        <input
-          type="text"
-          required
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <label> Summary </label>
-        <textarea
-          required
-          value={summary}
-          onChange={(e) => setSummary(e.target.value)}
-        ></textarea>
-        <label> Links </label>
-        <input
-          type="file"
-          value={selectedFile}
-          onChange={(e) => setSelectedFile(e.target.files[0])}
-        ></input>
-      </form>
-      <button> Save </button>
-      <PortfolioDisplay />
+    <div className="editor">
+      <CKEditor
+        editor={ClassicEditor}
+        data={text}
+        onChange={(Event, editor) => {
+          const data = editor.getData();
+          setText(data);
+        }}
+      />
+      <div>
+        <PortfolioDisplay text={text} />
+      </div>
     </div>
   );
 };
