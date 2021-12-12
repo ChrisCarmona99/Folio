@@ -1,4 +1,5 @@
 import PortfolioBuilder from "./PortfolioBuilder";
+
 const PortfolioDisplay = () => {
   return (
     <div className="portfolio-display">
@@ -6,6 +7,5 @@ const PortfolioDisplay = () => {
     </div>
   );
 };
-
 
 export default PortfolioDisplay;
