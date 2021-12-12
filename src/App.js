@@ -17,7 +17,6 @@ function App() {
     <Router>
       <div className="App">
         <Navbar />
-        {!user ? <SignIn /> : <SignOut />}
         <div className="Content">
           <Switch>
             <Route exact path="/">
