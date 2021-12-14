@@ -5,7 +5,6 @@ const Navbar = () => {
       <Link to="/"> Freelancer.io </Link>
       <Link to="/Work"> Work </Link>
       <Link to="/Explore"> Explore </Link>
-      <Link to="/Connect"> Connect </Link>
       <Link to="/Profile"> Profile </Link>
     </nav>
   );
