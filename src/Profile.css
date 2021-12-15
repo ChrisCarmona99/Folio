@@ -32,9 +32,16 @@
     height: 100vh;
     margin: 10px 10px 10px 10px;
   }
+
+  button { 
+    color:#050; 
+    font: old 84% 'trebuchet ms',helvetica,sans-serif; 
+    background-color:#fed; 
+    border:1px solid; 
+    border-color: #696 #363 #363 #696; 
+}
   
-  
-  .container {
+  /* .container {
     display: flex;
     overflow: scroll;
     width: 100%;
@@ -75,4 +82,4 @@
     background-color: unset;
     cursor: pointer;
     color: white;
-  }
+  } */

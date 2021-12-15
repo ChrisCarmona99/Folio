@@ -1,8 +1,9 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { BsPersonCircle } from "react-icons/bs";
 // import EdiText from "react-editext";
-import { database } from "../firebaseConfig";
+import { database, auth } from "../firebaseConfig";
 import { collection, query, getDocs, addDoc, where } from "firebase/firestore";
+
 
 const Profile = () => {
   const [bio, setBio] = useState("Enter your bio");
@@ -11,7 +12,7 @@ const Profile = () => {
   const [skillsInput, setSkillsInput] = useState("");
   const [certification, setCertification] = useState([]);
   const [certificationInput, setCertificationInput] = useState("");
-
+  
   const Init = () =>
   useCallback(async () => {
     await getCertifications();
@@ -83,7 +84,7 @@ useEffect(Init(), []);
     }
   };
 
-  // get, add, set userBio
+  // // get, add, set userBio
   // const getUserBio = async () => {
   //   const userBioRef = collection(database, "userbio");
   //   const snapshot = await getDocs(query(userBioRef));
@@ -109,6 +110,7 @@ useEffect(Init(), []);
   //     })
   //       .then((res) => {
   //         console.log("i was added::", res);
+  //         setBio();
   //         getUserBio();
   //       })
   //       .catch((e) => console.log("Error", e));
@@ -119,7 +121,7 @@ useEffect(Init(), []);
     <div className="profileContent">
       <div className="profileOverview">
         <BsPersonCircle size={100} icon="avatar" />
-        <h1>Name</h1>
+        <h1> </h1>
         <div className="biography">
           {/* <EdiText
             required
@@ -143,7 +145,8 @@ useEffect(Init(), []);
         <button onClick={(e) => addCertification(e)}> Add </button>
         {certification.length
           ? certification.map((data, i) => {
-              return <p key={i}>{data.certification}</p>;
+              return <p key={i}>{data.certification}              
+              </p>;
             })
           : null}
       </div>
