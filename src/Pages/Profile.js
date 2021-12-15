@@ -1,6 +1,4 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { BsPersonCircle } from "react-icons/bs";
-// import EdiText from "react-editext";
 import { database, auth } from "../firebaseConfig";
 import { collection, query, getDocs, addDoc, where } from "firebase/firestore";
 
@@ -85,65 +83,26 @@ const Profile = () => {
     }
   };
 
-  // // get, add, set userBio
-  // const getUserBio = async () => {
-  //   const userBioRef = collection(database, "userbio");
-  //   const snapshot = await getDocs(query(userBioRef));
-  //   if (snapshot.size) {
-  //     snapshot.forEach((doc) => {
-  //       const data = doc.data()
-  //       setBio(data.bio);
-  //     });
-  //   }
-  // };
-
-  // const handleBioChange = (e) => {
-  //   console.log(e);
-  //   setBioInput(e.target.value);
-  // };
-
-  // const addUserBio = () => {
-  //   if (bioInput) {
-  //     addDoc(collection(database, "userbio"), {
-  //       //TODO: Provide userID
-  //       //user: ,
-  //       bio: bioInput,
-  //     })
-  //       .then((res) => {
-  //         console.log("i was added::", res);
-  //         setBio();
-  //         getUserBio();
-  //       })
-  //       .catch((e) => console.log("Error", e));
-  //   }
-  // };
 
   return (
     <div className="profileContent">
       <div className="profileOverview">
-        <BsPersonCircle size={100} icon="avatar" />
+        <img
+          className="userAvatar"
+          src={auth.currentUser.photoURL}
+          alt="User profile picture"
+        />
         <h1>{auth.currentUser.displayName}</h1>
-        <div className="biography">
-          {/* <EdiText
-            required
-            className="bio"
-            type="text"
-            value={bio}
-            onSave={addUserBio}
-            onChange={handleBioChange}
-            submitOnEnter={addUserBio}
-          /> */}
-        </div>
       </div>
       <div className="certifications">
         <h1>Certifications</h1>
         <input
-          type={"text"}
+          type="text"
           placeholder="Add a certification"
           onChange={(e) => handleCertificationChange(e)}
           name="certification"
         />
-        <button onClick={(e) => addCertification(e)}> Add </button>
+        <button onClick={(e) => addCertification(e)}> + </button>
         {certification.length
           ? certification.map((data, i) => {
               return <p key={i}>{data.certification}</p>;
@@ -153,12 +112,12 @@ const Profile = () => {
       <div className="skills">
         <h1>Skills</h1>
         <input
-          type={"text"}
+          type="text"
           placeholder="Add a skill"
           onChange={(e) => handleSkillChange(e)}
           name="skill"
         />
-        <button onClick={(e) => addSkill(e)}> Add </button>
+        <button onClick={(e) => addSkill(e)}> + </button>
         {skill.length
           ? skill.map((data, i) => {
               return <p key={i}>{data.skill}</p>;
