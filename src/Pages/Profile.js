@@ -13,15 +13,15 @@ const Profile = () => {
   const [certificationInput, setCertificationInput] = useState("");
 
   const Init = () =>
-  useCallback(async () => {
-    await getCertifications();
-    await getSkills();
-  }, []);
+    useCallback(async () => {
+      await getCertifications();
+      await getSkills();
+    }, []);
 
-useEffect(Init(), []);
+  useEffect(Init(), []);
 
   const getCertifications = async () => {
-    //TODO: Add userID with where 
+    //TODO: Add userID with where
     const certificationRef = collection(database, "certifications");
     const snapshot = await getDocs(certificationRef);
     if (snapshot.size) {
@@ -54,7 +54,7 @@ useEffect(Init(), []);
   };
 
   const getSkills = async () => {
-    //TODO: Add userID with where 
+    //TODO: Add userID with where
     const skillRef = collection(database, "skills");
     const snapshot = await getDocs(query(skillRef));
     if (snapshot.size) {

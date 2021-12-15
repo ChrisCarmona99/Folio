@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
 import { auth } from "./firebaseConfig";
-import { FaUserAlt } from "react-icons/fa";
 
 export function SignIn() {
   return (
@@ -14,7 +13,7 @@ export function SignIn() {
 export function SignOut() {
   return (
     <div>
-      <FaUserAlt /> {auth.currentUser.displayName} &nbsp;
+      {auth.currentUser.displayName} &nbsp;
       <button onClick={() => signOut(auth)}>Sign Out</button>
     </div>
   );
