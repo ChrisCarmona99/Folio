@@ -100,3 +100,43 @@
   left: 0px;
   top: 769px;
 }
+
+a:link {
+  text-decoration: none;
+}
+
+.createPortfolioButton {
+  font-size: 15px;
+  padding: 20px;
+}
+
+.createPortfolioButton:hover {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.headerBold {
+  color: white;
+  text-transform: uppercase;
+  font-style: oblique;
+}
+
+button {
+  background-color: #fddb3a;
+  border: 1px solid;
+  border-radius: 5px;
+  border-color: black;
+  margin: 5px;
+  padding: 2px;
+}
+
+.home {
+  background: radial-gradient(
+    ellipse at 50% 54%,
+    rgba(0, 224, 255, 1),
+    rgba(140, 233, 250, 0.87),
+    rgba(203, 229, 247, 0.45)
+  );
+  background-size: cover;
+  height: 100vh;
+}
