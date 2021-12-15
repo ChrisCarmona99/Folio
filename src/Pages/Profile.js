@@ -4,7 +4,6 @@ import { BsPersonCircle } from "react-icons/bs";
 import { database, auth } from "../firebaseConfig";
 import { collection, query, getDocs, addDoc, where } from "firebase/firestore";
 
-
 const Profile = () => {
   const [bio, setBio] = useState("Enter your bio");
   const [bioInput, setBioInput] = useState("");
@@ -12,18 +11,20 @@ const Profile = () => {
   const [skillsInput, setSkillsInput] = useState("");
   const [certification, setCertification] = useState([]);
   const [certificationInput, setCertificationInput] = useState("");
-  
-  const Init = () =>
-  useCallback(async () => {
-    await getCertifications();
-    await getSkills();
-  }, []);
 
-useEffect(Init(), []);
+  const Init = () =>
+    useCallback(async () => {
+      await getCertifications();
+      await getSkills();
+    }, []);
+
+  useEffect(Init(), []);
 
   const getCertifications = async () => {
-    //TODO: Add userID with where 
-    const certificationRef = collection(database, "certifications");
+    const certificationRef = query(
+      collection(database, "certifications"),
+      where("user", "==", auth.currentUser.uid)
+    );
     const snapshot = await getDocs(certificationRef);
     if (snapshot.size) {
       snapshot.forEach((doc) => {
@@ -42,8 +43,7 @@ useEffect(Init(), []);
   const addCertification = () => {
     if (certificationInput) {
       addDoc(collection(database, "certifications"), {
-        //TODO: Provide userID so that it only adds certifications for a particular user
-        //user: ,
+        user: auth.currentUser.uid,
         certification: certificationInput,
       })
         .then((res) => {
@@ -55,8 +55,10 @@ useEffect(Init(), []);
   };
 
   const getSkills = async () => {
-    //TODO: Add userID with where 
-    const skillRef = collection(database, "skills");
+    const skillRef = query(
+      collection(database, "skills"),
+      where("user", "==", auth.currentUser.uid)
+    );
     const snapshot = await getDocs(query(skillRef));
     if (snapshot.size) {
       snapshot.forEach((doc) => {
@@ -72,8 +74,7 @@ useEffect(Init(), []);
   const addSkill = (e) => {
     if (skillsInput) {
       addDoc(collection(database, "skills"), {
-        //TODO: Provide userID so that it only adds certifications for a particular user
-        //user: ,
+        user: auth.currentUser.uid,
         skill: skillsInput,
       })
         .then((res) => {
@@ -121,7 +122,7 @@ useEffect(Init(), []);
     <div className="profileContent">
       <div className="profileOverview">
         <BsPersonCircle size={100} icon="avatar" />
-        <h1> </h1>
+        <h1>{auth.currentUser.displayName}</h1>
         <div className="biography">
           {/* <EdiText
             required
@@ -145,8 +146,7 @@ useEffect(Init(), []);
         <button onClick={(e) => addCertification(e)}> Add </button>
         {certification.length
           ? certification.map((data, i) => {
-              return <p key={i}>{data.certification}              
-              </p>;
+              return <p key={i}>{data.certification}</p>;
             })
           : null}
       </div>
