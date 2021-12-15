@@ -1,78 +1,50 @@
+.userAvatar {
+  border-radius: 50%;
+}
 
-.profileOverview, .portfolioPreview, .certifications, .skills {
-    outline: 2px solid black;
-    padding: 10px;
-    font-size: 15px;
-    margin-bottom: 15px;
-    grid-column: 1;
-  }
-  
-  .profileOverview {
-    text-align: center;
-  }
-  
-  .certifications, .skills {
-    grid-column-start: 1;
-  }
-  
-  .portfolioPreview {
-    margin-left: 25px;
-    grid-column: 2 / -1;
-  }
-  
-  .portfolioPreview {
-    grid-row: 1 / 3;
-    grid-column-start: 2;
-  }
-  
-  .profileContent {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    grid-template-rows: min-content auto;
-    height: 100vh;
-    margin: 10px 10px 10px 10px;
-  }
-  
-  
-  .container {
-    display: flex;
-    overflow: scroll;
-    width: 100%;
-    max-width: 100%;
-    padding-left: 14px;
-    border: 1px grey solid;
-    border-radius: 5px;
-    color: black
-  }
-  
-  .container input {
-    width: 100%;
-    min-width: 50%;
-    border: none;
-    border-radius: 5px;
-    padding: 14px;
-    padding-left: 14px;
-  }
-  
-  .tag {
-    display: flex;
-    align-items: center;
-    margin: 7px 0;
-    margin-right: 10px;
-    padding: 0 10px;
-    padding-right: 5px;
-    border: 1px solid orange;
-    border-radius: 5px;
-    background-color: orange;
-    white-space: nowrap;
-    color: white;
-  }
-  
-  .tag button {
-    display: flex;
-    padding: 6px;
-    border: none;
-    background-color: unset;
-    cursor: pointer;
-    color: white;
-  }
+.profileOverview,
+.portfolioPreview,
+.certifications,
+.skills {
+  outline: 2px solid black;
+  padding: 10px;
+  font-size: 15px;
+  margin-bottom: 15px;
+  grid-column: 1;
+}
+
+.profileOverview {
+  text-align: center;
+}
+
+.certifications,
+.skills {
+  grid-column-start: 1;
+}
+
+.portfolioPreview {
+  margin-left: 25px;
+  grid-column: 2 / -1;
+}
+
+.portfolioPreview {
+  grid-row: 1 / 3;
+  grid-column-start: 2;
+}
+
+.profileContent {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: min-content auto;
+  height: 100vh;
+  margin: 10px 10px 10px 10px;
+}
+
+button {
+  background-color: #fddb3a;
+  border: 1px solid;
+  border-radius: 5px;
+  border-color: black;
+  margin: 5px;
+  padding: 2px;
+}
