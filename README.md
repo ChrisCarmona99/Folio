@@ -4,7 +4,7 @@ Imagine Lara, she is one of the 30% of the Indonesian population that live below
 There are millions of people like Lara, and most of them will be stuck in a vicious cycle of poverty because of lack of accessibility to education/ 
 
 Our Product - "Folio": 
-Folio is an online marketplace for freeance services. Our product aims to make skill building more accessible to these people. By creating a platform that supports the development of sought after skills, and provides opportunities for freelancing work, users can build their portfolios and become more competitive in the labor market
+Folio is an online marketplace for freelance services. Our product aims to make skill building more accessible to these people. By creating a platform that supports the development of sought after skills, and provides opportunities for freelancing work, users can build their portfolios and become more competitive in the labor market
 
 Features: 
 - Work Posting Page 

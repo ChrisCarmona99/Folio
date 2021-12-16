@@ -6,10 +6,16 @@
 .portfolioPreview,
 .certifications,
 .skills {
-  outline: 2px solid black;
+  border: 2px solid black;
+  border-radius: 5px;
   padding: 10px;
   font-size: 15px;
   margin-bottom: 15px;
+}
+
+.profileOverview,
+.certifications,
+.skills {
   grid-column: 1;
 }
 
@@ -17,34 +23,21 @@
   text-align: center;
 }
 
-.certifications,
-.skills {
-  grid-column-start: 1;
-}
-
 .portfolioPreview {
-  margin-left: 25px;
-  grid-column: 2 / -1;
-}
-
-.portfolioPreview {
-  grid-row: 1 / 3;
-  grid-column-start: 2;
+  grid-row: 1 / span 2;
+  margin-left: 15px;
+  grid-column: 2 / span 3;
 }
 
 .profileContent {
   display: grid;
   grid-template-columns: auto auto auto;
-  grid-template-rows: min-content auto;
   height: 100vh;
   margin: 10px 10px 10px 10px;
 }
 
-button {
-  background-color: #fddb3a;
+input {
   border: 1px solid;
-  border-radius: 5px;
-  border-color: black;
-  margin: 5px;
-  padding: 2px;
+  border-radius: 2px;
+  padding: 5px;
 }

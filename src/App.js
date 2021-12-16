@@ -3,11 +3,8 @@ import "./Profile.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./Pages/Navbar";
 import Home from "./Pages/Home";
-import Work from "./Pages/Work";
-import Footer from "./Pages/Footer";
 import { SignIn, SignOut, useAuthentication } from "./authService";
 import Profile from "./Pages/Profile";
-
 import PortfolioBuilder from "./Pages/PortfolioBuilder";
 
 function App() {
@@ -22,7 +19,6 @@ function App() {
         ) : (
           <div className="Content">
             <Switch>
-
               <Route exact path="/">
                 <Home />
               </Route>
@@ -38,9 +34,7 @@ function App() {
               <Route path="/Profile">
                 <Profile />
               </Route>
-
             </Switch>
-            <Footer />
           </div>
         )}
       </div>
