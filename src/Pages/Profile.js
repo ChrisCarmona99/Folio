@@ -1,6 +1,8 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { database, auth } from "../firebaseConfig";
+import { db, auth } from "../firebaseConfig";
 import { collection, query, getDocs, addDoc, where } from "firebase/firestore";
+import PortfolioDisplay from "./PortfolioDisplay";
+import PortfolioBuilder from "./PortfolioBuilder";
 
 const Profile = () => {
   const [bio, setBio] = useState("Enter your bio");
@@ -20,7 +22,7 @@ const Profile = () => {
 
   const getCertifications = async () => {
     const certificationRef = query(
-      collection(database, "certifications"),
+      collection(db, "certifications"),
       where("user", "==", auth.currentUser.uid)
     );
     const snapshot = await getDocs(certificationRef);
@@ -40,7 +42,7 @@ const Profile = () => {
 
   const addCertification = () => {
     if (certificationInput) {
-      addDoc(collection(database, "certifications"), {
+      addDoc(collection(db, "certifications"), {
         user: auth.currentUser.uid,
         certification: certificationInput,
       })
@@ -54,7 +56,7 @@ const Profile = () => {
 
   const getSkills = async () => {
     const skillRef = query(
-      collection(database, "skills"),
+      collection(db, "skills"),
       where("user", "==", auth.currentUser.uid)
     );
     const snapshot = await getDocs(query(skillRef));
@@ -71,7 +73,7 @@ const Profile = () => {
 
   const addSkill = (e) => {
     if (skillsInput) {
-      addDoc(collection(database, "skills"), {
+      addDoc(collection(db, "skills"), {
         user: auth.currentUser.uid,
         skill: skillsInput,
       })
@@ -125,6 +127,7 @@ const Profile = () => {
       </div>
       <div className="portfolioPreview">
         <h1>My Portfolio</h1>
+        <PortfolioDisplay text={"Placeholder Text"} />
       </div>
     </div>
   );

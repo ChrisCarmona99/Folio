@@ -7,7 +7,6 @@ import Footer from "./Pages/Footer";
 import { SignIn, SignOut, useAuthentication } from "./authService";
 import Profile from "./Pages/Profile";
 
-
 import PortfolioBuilder from "./Pages/PortfolioBuilder";
 
 function App() {
@@ -29,8 +28,8 @@ function App() {
                 <PortfolioBuilder />
               </Route>
               <Route path="/Profile">
-              <Profile />
-            </Route>
+                <Profile />
+              </Route>
             </Switch>
             <Footer />
           </div>
