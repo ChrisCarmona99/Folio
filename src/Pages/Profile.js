@@ -1,12 +1,18 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { database, auth } from "../firebaseConfig";
 import { collection, query, getDocs, addDoc, where } from "firebase/firestore";
+import axios from "axios";
+import { async } from "@firebase/util";
+import { Images } from "./Images";
 
 const Profile = () => {
   const [skill, setSkill] = useState([]);
   const [skillsInput, setSkillsInput] = useState("");
   const [certification, setCertification] = useState([]);
   const [certificationInput, setCertificationInput] = useState("");
+  const [images, setImages] = useState([]);
+  const [imageIndex, setImageIndex] = useState(4);
+  const [countryQuery, setCountryQuery] = useState("london");
 
   const Init = () =>
     useCallback(async () => {
@@ -81,16 +87,51 @@ const Profile = () => {
     }
   };
 
+  const getImageIndex = () => {
+    return imageIndex;
+  };
+
+  useEffect(() => {
+    console.log("IMAGE INDEX = " + getImageIndex());
+    const APIurl = `https://api.unsplash.com/photos?query=${countryQuery.toLowerCase}&client_id=yr7UM57f2Z3ChtrD9gIfCcppylbzNKIPnF-uguuufOM`;
+    fetch(APIurl)
+      .then((r) => r.json())
+      .then((r) => setImages(r));
+  }, []);
+
   return (
     <div className="profileContent">
       <div className="profileOverview">
+        <button
+          onClick={() =>
+            imageIndex === 0 ? setImageIndex(0) : setImageIndex(imageIndex - 1)
+          }
+        >
+          left
+        </button>
         <img
           className="userAvatar"
           src={auth.currentUser.photoURL}
           alt="User profile picture"
         />
+        <button
+          onClick={() =>
+            imageIndex === 9 ? setImageIndex(9) : setImageIndex(imageIndex + 1)
+          }
+        >
+          right
+        </button>
         <h1>{auth.currentUser.displayName}</h1>
+
+        {/* Image Selector: */}
+        {/* <button onClick={fetchAPI}>Get Pictures</button> */}
+        {/* <div>{imageIndex}</div> */}
+        <div className="photo">
+          {images.length > 0 && <Images images={images} index={imageIndex} />}
+        </div>
+        {/* End of Image Selector Div */}
       </div>
+
       <div className="certifications">
         <h1>Certifications</h1>
         <input
@@ -106,6 +147,7 @@ const Profile = () => {
             })
           : null}
       </div>
+
       <div className="skills">
         <h1>Skills</h1>
         <input
@@ -121,6 +163,7 @@ const Profile = () => {
             })
           : null}
       </div>
+
       <div className="portfolioPreview">
         <h1>My Portfolio</h1>
       </div>

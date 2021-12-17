@@ -6,6 +6,7 @@ import Home from "./Pages/Home";
 import { SignIn, SignOut, useAuthentication } from "./authService";
 import Profile from "./Pages/Profile";
 import PortfolioBuilder from "./Pages/PortfolioBuilder";
+import Images from "./Pages/Images";
 
 function App() {
   const user = useAuthentication();
@@ -27,9 +28,9 @@ function App() {
                 <PortfolioBuilder />
               </Route>
 
-              <Route path="/Work">
+              {/* <Route path="/Work">
                 <Work />
-              </Route>
+              </Route> */}
 
               <Route path="/Profile">
                 <Profile />

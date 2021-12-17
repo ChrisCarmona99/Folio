@@ -26,6 +26,3 @@ export async function fetchPortfolio() {
         ...doc.data(),
     }));
 }
-
-
-

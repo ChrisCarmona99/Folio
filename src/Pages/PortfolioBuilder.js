@@ -10,14 +10,6 @@ const PortfolioBuilder = () => {
 
   const [imageData, setImageData] = useState(null);
 
-  useEffect(() => {
-    const url =
-      "https://api.unsplash.com/search/photos?query=indonesia&client_id=yr7UM57f2Z3ChtrD9gIfCcppylbzNKIPnF-uguuufOM";
-    fetch(url)
-      .then((r) => r.json())
-      .then((r) => setImageData);
-  });
-
   return (
     <div className="editor">
       <CKEditor
