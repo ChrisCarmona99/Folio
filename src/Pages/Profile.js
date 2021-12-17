@@ -3,12 +3,16 @@ import { db, auth } from "../firebaseConfig";
 import { collection, query, getDocs, addDoc, where } from "firebase/firestore";
 import PortfolioDisplay from "./PortfolioDisplay";
 import PortfolioBuilder from "./PortfolioBuilder";
+import { Images } from "./Images";
 
 const Profile = () => {
   const [skill, setSkill] = useState([]);
   const [skillsInput, setSkillsInput] = useState("");
   const [certification, setCertification] = useState([]);
   const [certificationInput, setCertificationInput] = useState("");
+  const [images, setImages] = useState([]);
+  const [imageIndex, setImageIndex] = useState(4);
+  const [countryQuery, setCountryQuery] = useState("london");
 
   const Init = () =>
     useCallback(async () => {
@@ -83,15 +87,39 @@ const Profile = () => {
     }
   };
 
+  useEffect(() => {
+    const APIurl = `https://api.unsplash.com/photos?query=${countryQuery.toLowerCase}&client_id=yr7UM57f2Z3ChtrD9gIfCcppylbzNKIPnF-uguuufOM`;
+    fetch(APIurl)
+      .then((r) => r.json())
+      .then((r) => setImages(r));
+  }, []);
+
   return (
     <div className="profileContent">
       <div className="profileOverview">
+        <button
+          onClick={() =>
+            imageIndex === 0 ? setImageIndex(0) : setImageIndex(imageIndex - 1)
+          }
+        >
+          left
+        </button>
         <img
           className="userAvatar"
           src={auth.currentUser.photoURL}
           alt="User profile picture"
         />
+        <button
+          onClick={() =>
+            imageIndex === 9 ? setImageIndex(9) : setImageIndex(imageIndex + 1)
+          }
+        >
+          right
+        </button>
         <h1>{auth.currentUser.displayName}</h1>
+        <div className="photo">
+          {images.length > 0 && <Images images={images} index={imageIndex} />}
+        </div>
       </div>
       <div className="certifications">
         <h1>Certifications</h1>
