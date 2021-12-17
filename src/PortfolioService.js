@@ -1,4 +1,4 @@
-import { db } from "./firebaseConfig";
+import { auth, db } from "./firebaseConfig";
 import {
   collection,
   getDocs,
@@ -12,6 +12,7 @@ export async function createPortfolioContent(text) {
   const data = { text };
   const docRef = await addDoc(collection(db, "PortfolioContent"), {
     Body: text,
+    user: auth.currentUser.uid,
   });
   return docRef;
 }

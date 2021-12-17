@@ -15,7 +15,6 @@ export function SignIn() {
 export function SignOut() {
   return (
     <div className="authContent">
-      {/* {auth.currentUser.displayName} &nbsp; */}
       <button className="signOutButton" onClick={() => signOut(auth)}>
         Sign Out
       </button>

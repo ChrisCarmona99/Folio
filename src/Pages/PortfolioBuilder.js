@@ -3,8 +3,8 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { useEffect, useState } from "react";
 import PortfolioDisplay from "./PortfolioDisplay";
 import { createPortfolioContent } from "../PortfolioService";
-import { db } from "../firebaseConfig";
-import { getDocs, query, collection } from "@firebase/firestore";
+import { db, auth } from "../firebaseConfig";
+import { getDocs, query, collection, where } from "@firebase/firestore";
 
 const PortfolioBuilder = () => {
   const [text, setText] = useState("");
@@ -18,7 +18,10 @@ const PortfolioBuilder = () => {
 
   useEffect(() => {
     async function getItems() {
-      const q = query(collection(db, "PortfolioContent"));
+      const q = query(
+        collection(db, "PortfolioContent"),
+        where("user", "==", auth.currentUser.uid)
+      );
       const querySnapshot = await getDocs(q);
 
       const portfolioItems = [];

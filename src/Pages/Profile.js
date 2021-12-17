@@ -124,7 +124,7 @@ const Profile = () => {
           : null}
       </div>
       <div className="portfolioPreview">
-        <h1>My Portfolio</h1>
+        <PortfolioBuilder />
       </div>
     </div>
   );
