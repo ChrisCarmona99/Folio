@@ -1,11 +1,13 @@
 import "./App.css";
 import "./Profile.css";
+import "./WorkPage.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./Pages/Navbar";
 import Home from "./Pages/Home";
 import { SignIn, SignOut, useAuthentication } from "./authService";
 import Profile from "./Pages/Profile";
 import PortfolioBuilder from "./Pages/PortfolioBuilder";
+import Work from "./Pages/Work";
 
 function App() {
   const user = useAuthentication();
@@ -24,11 +26,17 @@ function App() {
               <Route exact path="/">
                 <Home />
               </Route>
+
               <Route path="/PortfolioBuilder">
                 <PortfolioBuilder />
               </Route>
+
               <Route path="/Profile">
                 <Profile />
+              </Route>
+
+              <Route path="/Work">
+                <Work />
               </Route>
             </Switch>
           </div>
