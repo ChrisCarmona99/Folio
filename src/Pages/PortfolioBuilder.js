@@ -2,11 +2,7 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { useEffect, useState } from "react";
 import PortfolioDisplay from "./PortfolioDisplay";
-import {
-  createPortfolioContent,
-  fetchPortfolioContent,
-} from "../PortfolioService";
-import HTMLReactParser from "html-react-parser";
+import { createPortfolioContent } from "../PortfolioService";
 import { db } from "../firebaseConfig";
 import { getDocs, query, collection } from "@firebase/firestore";
 
@@ -53,12 +49,15 @@ const PortfolioBuilder = () => {
           setText(data);
         }}
       />
-      <button onClick={(e) => handleSubmit(text)}> Save </button>
+      <button
+        className="savePortfolioContent"
+        onClick={(e) => handleSubmit(text)}
+      >
+        {" "}
+        Save{" "}
+      </button>
       <div>
-        <div className="PortfolioDisplay">
-          <h2> Portfolio Content </h2>
-          <p> {content.map((content) => `${content.Body || content.text}`)} </p>
-        </div>
+        <PortfolioDisplay content={content} />
       </div>
     </div>
   );

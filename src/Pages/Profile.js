@@ -125,7 +125,6 @@ const Profile = () => {
       </div>
       <div className="portfolioPreview">
         <h1>My Portfolio</h1>
-        <PortfolioDisplay text={"Placeholder Text"} />
       </div>
     </div>
   );

@@ -12,8 +12,10 @@ function App() {
   return (
     <Router>
       <div className="App">
-        {!user ? "" : <Navbar />}
-        {!user ? <SignIn /> : <SignOut />}
+        <div className="header">
+          {!user ? "" : <Navbar />}
+          {!user ? <SignIn /> : <SignOut />}
+        </div>
         {!user ? (
           ""
         ) : (

@@ -15,8 +15,3 @@ export async function createPortfolioContent(text) {
   });
   return docRef;
 }
-
-export async function fetchPortfolioContent() {
-  const querySnapshot = await getDocs(collection(db, "PortfolioContent"));
-  return querySnapshot.docs.map((doc) => ({ ...doc.data }));
-}
