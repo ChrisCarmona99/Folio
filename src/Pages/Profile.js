@@ -5,8 +5,6 @@ import PortfolioDisplay from "./PortfolioDisplay";
 import PortfolioBuilder from "./PortfolioBuilder";
 
 const Profile = () => {
-  const [bio, setBio] = useState("Enter your bio");
-  const [bioInput, setBioInput] = useState("");
   const [skill, setSkill] = useState([]);
   const [skillsInput, setSkillsInput] = useState("");
   const [certification, setCertification] = useState([]);
